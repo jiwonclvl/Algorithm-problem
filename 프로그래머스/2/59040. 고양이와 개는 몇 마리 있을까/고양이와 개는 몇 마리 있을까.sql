@@ -1,0 +1,6 @@
+SELECT ANIMAL_TYPE,
+       count(1) count
+FROM ANIMAL_INS
+WHERE ANIMAL_TYPE IN ("Cat", "Dog")
+GROUP BY 1
+order by 1
