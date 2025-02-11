@@ -1,0 +1,18 @@
+SELECT ANIMAL_ID,
+       ANIMAL_TYPE,
+       NAME 
+FROM
+(
+SELECT i.ANIMAL_ID,
+       i.ANIMAL_TYPE,
+       i.NAME,
+       o.SEX_UPON_OUTCOME as outs
+FROM ANIMAL_INS i INNER JOIN  ANIMAL_OUTS o ON i.ANIMAL_ID = o.ANIMAL_ID
+WHERE i.SEX_UPON_INTAKE LIKE "%intact%"
+) a
+WHERE a.outs LIKE "%Spayed%" OR a.outs LIKE "%Neutered%"
+ORDER BY 1
+
+
+
+
