@@ -9,13 +9,15 @@ class Solution {
         String[] str = s.split("");
         
         for (int i = 0; i < str.length; i++) {
-            if (!list.keySet().contains(str[i])) {
-                list.put(str[i],i);
-                result[i] = -1;
+            int value = list.getOrDefault(str[i],-1);
+            
+            if (value != -1) {
+                result[i] = i - value;
             } else {
-                result[i] = i - list.get(str[i]);
-                list.put(str[i],i);
+                result[i] = value;
             }
+            
+            list.put(str[i],i);
         }
 
         return result;
